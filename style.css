@@ -37,6 +37,20 @@ body {
 
 .panel-header {
     margin-bottom: 24px;
+    display: flex; /* Выстраивает в ряд */
+    align-items: center; /* Центрирует иконку и текст по вертикали */
+    gap: 15px; /* Расстояние между иконкой и текстом */
+}
+
+.panel-logo {
+    width: 45px; /* Настройте размер под себя */
+    height: 45px;
+    object-fit: contain;
+}
+
+.header-text {
+    display: flex;
+    flex-direction: column; /* Заголовок и подзаголовок остаются друг под другом */
 }
 
 .panel h1 {
