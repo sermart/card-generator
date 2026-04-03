@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Генератор карточек</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+<!-- html2canvas -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <div class="panel">
+        <div class="panel-header">
+            <h1>Генератор карточек</h1>
+            <p class="panel-subtitle">Создайте карточку с формулами</p>
+        </div>
+
+        <div class="input-group">
+            <label>Дано</label>
+            <textarea id="givenInput" placeholder="m = 1420 кг&#10;S_o = 900 см**2&#10;g = 10 H/кг"></textarea>
+        </div>
+
+        <div class="input-group">
+            <label>Найти</label>
+            <textarea id="findInput" placeholder="p = ?"></textarea>
+        </div>
+
+        <div class="buttons">
+            <button id="downloadBtn" class="primary">Скачать PNG</button>
+            <button id="clearBtn">Очистить</button>
+        </div>
+
+        <div class="hint">
+            <div class="hint-title">Подсказки ввода формул</div>
+            
+            <div class="hint-grid">
+                <div class="hint-card">
+                    <div class="hint-symbol">d</div>
+                    <div class="hint-meaning">Дельта (Δ)</div>
+                    <div class="hint-example">dE → ΔE</div>
+                </div>
+
+                <div class="hint-card">
+                    <div class="hint-symbol">g</div>
+                    <div class="hint-meaning">Градусы (°)</div>
+                    <div class="hint-example">90g → 90°</div>
+                </div>
+
+                <div class="hint-card">
+                    <div class="hint-symbol">_</div>
+                    <div class="hint-meaning">Нижний индекс</div>
+                    <div class="hint-example">v_0 → v₀</div>
+                </div>
+
+                <div class="hint-card">
+                    <div class="hint-symbol">**</div>
+                    <div class="hint-meaning">Степень</div>
+                    <div class="hint-example">x**2 → x²</div>
+                </div>
+            </div>
+
+            <div class="hint-card-wide">
+                <div class="hint-symbol-wide">s()</div>
+                <div class="hint-meaning-wide">Квадратный корень</div>
+                <div class="hint-example-wide">s(9) → √9</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="preview">
+        <div class="card" id="card">
+            <div class="left">
+                <div class="block">
+                    <div class="title">Дано</div>
+                    <div id="givenOutput" class="output-content"></div>
+                </div>
+                <div class="block bottom">
+                    <div class="title">Найти</div>
+                    <div id="findOutput" class="output-content"></div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="title">Решение</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
