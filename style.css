@@ -37,20 +37,20 @@ body {
 
 .panel-header {
     margin-bottom: 24px;
-    display: flex; /* Выстраивает в ряд */
-    align-items: center; /* Центрирует иконку и текст по вертикали */
-    gap: 15px; /* Расстояние между иконкой и текстом */
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .panel-logo {
-    width: 45px; /* Настройте размер под себя */
+    width: 45px;
     height: 45px;
     object-fit: contain;
 }
 
 .header-text {
     display: flex;
-    flex-direction: column; /* Заголовок и подзаголовок остаются друг под другом */
+    flex-direction: column;
 }
 
 .panel h1 {
@@ -242,7 +242,7 @@ button:not(.primary):hover {
     background: #1a1f2e;
     padding: 6px 12px;
     border-radius: 12px;
-    min-width:55px;
+    min-width: 55px;
 }
 
 .hint-meaning-wide {
@@ -336,6 +336,7 @@ button:not(.primary):hover {
     font-family: 'Inter', 'KaTeX_Math', serif;
 }
 
+/* АДАПТИВ ТОЛЬКО ДЛЯ КАРТОЧКИ */
 @media (max-width: 1000px) {
     body {
         padding: 20px;
@@ -345,6 +346,7 @@ button:not(.primary):hover {
         flex-direction: column;
         align-items: center;
         gap: 30px;
+        width: 100%;
     }
     
     .panel {
@@ -352,17 +354,85 @@ button:not(.primary):hover {
         max-width: 480px;
     }
     
+    .preview {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
     .card {
         width: 100%;
-        max-width: 780px;
+        max-width: 100%;
+        min-width: auto;
+        /* Сохраняем горизонтальную структуру на планшетах */
+        flex-direction: row;
     }
     
-    .hint-card-wide {
+    .left {
+        width: 35%;
+    }
+    
+    .right {
+        width: 65%;
+    }
+    
+    .block {
+        padding: 20px 16px;
+    }
+    
+    .title {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+    
+    .output-content {
+        font-size: 15px;
+    }
+    
+    .output-content .katex {
+        font-size: 1em;
+    }
+    
+    .output-content div {
+        margin-bottom: 10px;
+        padding: 4px 0;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+}
+
+/* Для очень маленьких телефонов — делаем вертикальную структуру */
+@media (max-width: 600px) {
+    .card {
         flex-direction: column;
-        text-align: center;
     }
     
-    .hint-meaning-wide {
-        text-align: center;
+    .left {
+        width: 100%;
+        flex-direction: row;
+        border-right: none;
+        border-bottom: 1px solid #e2e0db;
+    }
+    
+    .right {
+        width: 100%;
+        padding: 20px 16px;
+    }
+    
+    .left .block {
+        flex: 1;
+        border-bottom: none;
+    }
+    
+    .left .block.bottom {
+        border-left: 1px solid #e2e0db;
+    }
+    
+    .output-content {
+        font-size: 14px;
+    }
+    
+    .title {
+        font-size: 15px;
     }
 }
